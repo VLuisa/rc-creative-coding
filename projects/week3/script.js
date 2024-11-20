@@ -5,7 +5,6 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xeeef92);
 
 // Create camera
-const aspect = window.innerWidth / window.innerHeight;
 const zoom = 0.035;
 const camera = new THREE.OrthographicCamera(
   (-window.innerWidth / 2) * zoom,
@@ -15,11 +14,11 @@ const camera = new THREE.OrthographicCamera(
   0.1,
   1000
 );
-camera.position.set(0, 0, 10); // Position the camera at z=10
-camera.lookAt(0, 0, 0); // Look at the center of the scene
+camera.position.set(0, 0, 10);
+camera.lookAt(0, 0, 0);
 
 // Create renderer
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -28,11 +27,11 @@ const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshStandardMaterial({ color: 0x9392ef });
 
 // Add a light source
-const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
+const ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
 
-const light = new THREE.PointLight(0xffffff, 2, 100); // white light, intensity of 1, and distance of 100
-light.position.set(1, 1, 10); // Position the light in 3D space
+const light = new THREE.PointLight(0xffffff, 2, 100);
+light.position.set(1, 1, 10);
 scene.add(light);
 
 // Add cube to the scene
